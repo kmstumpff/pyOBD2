@@ -23,5 +23,5 @@ class Interface:
     def write(self, msg):
         raise NotImplementedError()
 
-    def read(self, msg, len, timeout=0):
+    def read(self, len, timeout=0):
         raise NotImplementedError()

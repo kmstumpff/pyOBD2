@@ -17,3 +17,9 @@ class OBD2:
 
     def connect(self):
         self.interface.connect()
+
+    def write(self, msg):
+        self.interface.write(msg)
+
+    def read(self, len, timeout=0):
+        return self.interface.read(len, timeout)
