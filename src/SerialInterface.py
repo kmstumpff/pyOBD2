@@ -8,12 +8,13 @@ class SerialInterface(Interface.Interface):
     def setPath(self, path):
         self.path = path
 
-    def connect(self):
-        self.conn = serial.Serial(self.path, baudrate=38400, timeout=1)
+    def connect(self, timeout_l):
+        self.conn = serial.Serial(self.path, baudrate=38400, timeout=timeout_l)
 
     def write(self, command):
         self.conn.write(command)
 
-    def read(self, len, timeout):
-        # TODO -- len, timeout
+    def read(self, len):
+        #print "Bytes available: " + str(self.conn.in_waiting)
+        #print "Bytes reading: " + str(len)
         return self.conn.read(len)

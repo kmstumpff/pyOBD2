@@ -8,20 +8,20 @@ class Interface:
     def getType(self):
         return self.type
 
-    def setPath():
+    def setPath(self, path):
         raise NotImplementedError()
 
-    def setHost():
+    def setHost(self, host):
         raise NotImplementedError()
 
-    def setPort():
+    def setPort(self, port):
         raise NotImplementedError()
 
-    def connect():
+    def connect(self, timeout_l):
         raise NotImplementedError()
 
     def write(self, msg):
         raise NotImplementedError()
 
-    def read(self, len, timeout=0):
+    def read(self, len):
         raise NotImplementedError()
