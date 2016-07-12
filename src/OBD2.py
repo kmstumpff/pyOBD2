@@ -25,20 +25,15 @@ class OBD2:
     def connect(self, timeout=2):
         self.interface.connect(timeout)
 
+    def initialize(self):
+        self.interface.initialize()
+
 
     def readPID(self, mode, pid, numBytes):
         #print "write(" + pid + ")"
         self.interface.write(getPIDString(mode, pid) + self.NL)
-        temp = self.interface.read(8)
-        #print "read(" + temp + ")"
-        response = self.interface.read(5 + (numBytes * 3)) # two characters and a space per byte
-        #print "read(" + response + ")"
-        temp = self.interface.read(3)
-        #print "read(" + temp + ")"
-        #print response
-        ret = response[6:] # ignore the first 6 characters (mode, pid)
-
-        return ret
+        response = self.interface.read(7 + (numBytes * 2)) # two characters and a space per byte
+        return response[5:(5+(numBytes*2))] # ignore the first 5 characters ('\r', mode, pid)
 
     def getRPMs(self):
         res = self.readPID(1, PID.RPM, 2)

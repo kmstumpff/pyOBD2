@@ -20,8 +20,11 @@ class Interface:
     def connect(self, timeout_l):
         raise NotImplementedError()
 
+    def initialize(self):
+        raise NotImplementedError()
+
     def write(self, msg):
         raise NotImplementedError()
 
-    def read(self, len):
+    def read(self, length):
         raise NotImplementedError()
